@@ -1,6 +1,3 @@
-using Builder.Application.Models;
-using Builder.Core.Enums;
-using Builder.Infrastructure;
 using Builder.Infrastructure.Payments;
 using Microsoft.AspNetCore.Mvc;
 
