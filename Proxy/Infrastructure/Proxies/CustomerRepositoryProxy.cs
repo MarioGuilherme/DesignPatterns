@@ -3,6 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Proxy.Infrastructure.Proxies;
 
+// Parecido com o padrão Decorator, mas com conceito de uso diferente, aqui valida-se para acessar o obj (dado)
 public class CustomerRepositoryProxy(ICustomerRepository repository, IMemoryCache cache, IHttpContextAccessor httpContextAccessor) : ICustomerRepository {
     private readonly ICustomerRepository _repository = repository;
     private readonly IMemoryCache _cache = cache;
