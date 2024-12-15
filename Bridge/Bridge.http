@@ -1,0 +1,6 @@
+@Bridge_HostAddress = http://localhost:5215
+
+GET {{Bridge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
