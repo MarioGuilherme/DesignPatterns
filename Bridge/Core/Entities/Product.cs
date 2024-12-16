@@ -62,7 +62,7 @@ public class Product(IUnit unit) : Item(unit) {
         if (!_unit.Validate(units))
             throw new ArgumentException();
 
-        return units * PricePerUnit;
+        return units * this.PricePerUnit;
     }
 }
 
@@ -73,7 +73,7 @@ public class Food(IUnit unit) : Item(unit) {
         if (!_unit.Validate(units))
             throw new ArgumentException();
 
-        return units * PricePerUnit;
+        return units * this.PricePerUnit;
     }
 }
 
@@ -85,10 +85,10 @@ public interface IUnit {
 
 public class Kg : IUnit {
     public decimal Minimum { get; set; }
-    public decimal Maximum { get; set; }
+    public decimal Maximum { get; set; } = 10;
 
     public bool Validate(decimal units) {
-        return units < 10;
+        return units <= this.Maximum;
     }
 }
 
