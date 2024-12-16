@@ -1,4 +1,4 @@
-﻿namespace AwesomeShopPatterns.API.Core.Entities;
+﻿namespace Composite.Core.Entities;
 
 public abstract class OldItem {
     public string Title { get; set; }
