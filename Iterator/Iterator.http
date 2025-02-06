@@ -1,0 +1,6 @@
+@Iterator_HostAddress = http://localhost:5183
+
+GET {{Iterator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
