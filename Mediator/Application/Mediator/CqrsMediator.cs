@@ -7,26 +7,30 @@ public class CqrsMediator : ICqrsMediator {
     public async Task<IMediatorResult> Handle(IQuery query) {
         if (query is null) return new MediatorResult(null, false);
 
-        if (query is GetProductByIdQuery) {
-            GetProductByIdQueryHandler handler = new();
-            ProductDetailsViewModel result = await handler.Handle((query as GetProductByIdQuery)!);
+        switch (query) {
+            case null:
+                return new MediatorResult(null, false);
 
-            return new MediatorResult(result, true);
+            case GetProductByIdQuery: {
+                GetProductByIdQueryHandler handler = new();
+                ProductDetailsViewModel result = await handler.Handle((query as GetProductByIdQuery)!);
+                return new MediatorResult(result, true);
+            }
+
+            case GetAllProductsQuery:{
+                GetAllProductsQueryHandler handler = new();
+                ProductViewModel result = await handler.Handle((query as GetAllProductsQuery)!);
+                return new MediatorResult(result, true);
+            }
+
+            default:
+                return new MediatorResult(null, false);
         }
-        
-        if (query is GetAllProductsQuery) {
-            GetAllProductsQueryHandler handler = new();
-            ProductViewModel result = await handler.Handle((query as GetAllProductsQuery)!);
-
-            return new MediatorResult(result, true);
-        }
-
-        return new MediatorResult(null, false);
     }
 
-    public IMediatorResult Handle(ICommand command) {
+    public Task<IMediatorResult> Handle(ICommand command) {
         if (command is null)
-            return new MediatorResult(null, false);
+            return Task.FromResult((IMediatorResult)new MediatorResult(null, false));
 
         //if (command is CreateProductCommand) {
         //    CreateProductCommandHandler handler = new();
@@ -35,6 +39,6 @@ public class CqrsMediator : ICqrsMediator {
         //    return new MediatorResult(result, true);
         //}
 
-        return new MediatorResult(null, false);
+        return Task.FromResult((IMediatorResult)new MediatorResult(null, false));
     }
 }
