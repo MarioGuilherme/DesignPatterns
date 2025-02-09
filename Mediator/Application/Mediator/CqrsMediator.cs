@@ -17,7 +17,7 @@ public class CqrsMediator : ICqrsMediator {
                 return new MediatorResult(result, true);
             }
 
-            case GetAllProductsQuery:{
+            case GetAllProductsQuery: {
                 GetAllProductsQueryHandler handler = new();
                 ProductViewModel result = await handler.Handle((query as GetAllProductsQuery)!);
                 return new MediatorResult(result, true);
