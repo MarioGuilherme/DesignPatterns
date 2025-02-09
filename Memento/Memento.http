@@ -1,0 +1,6 @@
+@Memento_HostAddress = http://localhost:5273
+
+GET {{Memento_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
