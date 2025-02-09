@@ -17,5 +17,6 @@ public class ShoppingCartCaretaker(ShoppingCartOriginator originator) {
 
             Console.WriteLine($"Customer: {memento.CustomerId}, Items: {items}, Saved At: {memento.SavedAt}\n");
         }
+        //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(this._mementos));
     }
 }
