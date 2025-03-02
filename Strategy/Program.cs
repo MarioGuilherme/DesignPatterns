@@ -1,8 +1,13 @@
+using Strategy.Infrastructure.Payments.Strategies;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<IPaymentContext, PaymentContext>();
+builder.Services.AddScoped<IPaymentStrategyFactory, PaymentStrategyFactory>();
 
 WebApplication app = builder.Build();
 
