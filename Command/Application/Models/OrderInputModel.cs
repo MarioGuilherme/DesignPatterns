@@ -1,3 +1,5 @@
+using Command.Core.Enums;
+
 namespace Command.Application.Models;
 
 public class OrderInputModel {
